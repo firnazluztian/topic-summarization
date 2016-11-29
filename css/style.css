@@ -27,7 +27,7 @@ nav {
 .body_container {
 	position: relative;
 	background-color: #fafafa ;
-	height: 1000px; /*set into auto later*/
+	min-height: 768px; /*set into auto later*/
 	margin: 0px auto;
 	padding: 2%;
 	}
@@ -53,7 +53,7 @@ footer {
 }
 
 #footer_profile {
-	position: relative;
+	position: absolute;
   	right: 0;
   	bottom: 0;
   	left: 0;
@@ -74,7 +74,7 @@ footer {
 	}
 
 	.body_container {
-		height: auto;
+		min-height: 168px;
 	}
 
 	footer {
@@ -87,13 +87,17 @@ footer {
 		padding-top: 2%;
 		color: #fafafa ;
 	}
+	#footer_profile {
+		position: absolute;
+	}
 }
 
 /*rotated phone or small tablet*/
 @media (max-height: 400px) { 
 
 	footer {
-		position: relative;
+		position: static;
+
 	}
 }
 /* Medium devices (desktops, 992px and up) */
