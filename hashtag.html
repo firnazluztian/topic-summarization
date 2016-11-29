@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Topic Summarization</title>
+
+	<!-- main css -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- advance search css -->
+	<link rel="stylesheet" type="text/css" href="css/search_style.css">
+	<!-- bootstrap main css -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body id="body">
+	
+	<nav>
+	<div class="search_bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+		        <div class="input-group" id="adv-search">
+		            <input type="text" class="form-control" placeholder="Search for hashtag" />
+		            <div class="input-group-btn">
+		                <div class="btn-group" role="group">
+		                    <div class="dropdown dropdown-lg">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+		                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+		                            <form class="form-horizontal" role="form">
+
+		                              <div class="form-group">
+		                                <label for="filter">Filter by</label>
+		                                <select class="form-control">
+		                                    <option value="0" selected>Most popular</option>
+		                                    <option value="1">Relevance</option>
+		                                    <option value="2">Location</option>
+		                                </select>
+		                              </div>
+
+		                              <div class="form-group">
+		                                <label for="contain">Contains the words</label>
+		                                <input class="form-control" type="text" />
+		                              </div>
+
+		                              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true" onclick="runSearch()"></span></button>
+		                            </form>  
+		                        </div>
+		                    </div>
+		                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true" onclick="runSearch()"></span></button>
+		                </div>
+		            </div>
+		        </div>
+		      </div>
+		    </div>
+		</div>
+	</div>
+	</nav>
+
+	<div class="body_container">
+		<p>Searching for : #</p>
+		
+		<!-- input result here -->
+		<div id="show_result" class="container">
+			<p style="text-align: center;">display tweet or results here</p>
+		</div>
+
+	</div>
+	<!-- end of body_container -->
+
+	<footer id="footer_profile">
+		<ul class="list-inline" style="text-align: center;">
+  			<li>About us</li>
+  			<li>Project details</li>	
+  			<li>Contact us</li>
+  			<li><a href="index.html">Home</a></li>
+		</ul>
+		<p style="text-align: center; padding: 1%;margin: 0;">Copyright © 2016, Cooper. All rights reserved.</p>
+	</footer>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+		function runSearch() {
+   			
+   		}
+	</script>
+</body>
+</html>
