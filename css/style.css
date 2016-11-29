@@ -78,15 +78,29 @@ footer {
 	}
 
 	footer {
-		width: 100%;
-		height: auto;
-		bottom: 0%;
+		position: absolute;
+	  	right: 0;
+	  	bottom: 0;
+	  	left: 0;
+	 	/* padding: 1rem;*/
 		background-color: #66bb6a ;
+		padding-top: 2%;
+		color: #fafafa ;
 	}
 }
 
+/*rotated phone or small tablet*/
+@media (max-height: 400px) { 
+
+	footer {
+		position: relative;
+	}
+}
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+	footer {
+		position: absolute;
+	}
 }
 
 /*loader*/
