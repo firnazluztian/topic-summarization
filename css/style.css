@@ -30,7 +30,8 @@ nav {
 	min-height: 368px; /*set into auto later*/
 	margin: 0px auto;
 	padding: 2%;
-	overflow: scroll;
+	
+	overflow: hidden;
 	}
 
 #show_result {
@@ -85,6 +86,9 @@ footer {
 	#footer_profile {
 		position: absolute;
 	}
+	.body_container {
+		overflow: scroll;
+    }
 }
 
 /*rotated phone or small tablet*/
@@ -94,6 +98,9 @@ footer {
 		position: relative;
 
 	}
+	.body_container {
+		overflow: scroll;
+    }
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
