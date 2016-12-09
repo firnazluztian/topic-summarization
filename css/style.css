@@ -27,9 +27,10 @@ nav {
 .body_container {
 	position: relative;
 	background-color: #fafafa ;
-	min-height: 768px; /*set into auto later*/
+	min-height: 368px; /*set into auto later*/
 	margin: 0px auto;
 	padding: 2%;
+	overflow: scroll;
 	}
 
 #show_result {
@@ -42,13 +43,14 @@ nav {
 }
 
 footer {
-	position: absolute;
+	width: 100%;
   	right: 0;
   	bottom: 0;
   	left: 0;
  /* padding: 1rem;*/
 	background-color: #66bb6a ;
 	padding-top: 2%;
+	margin-top: 2%;
 	color: #fafafa ;
 }
 
@@ -78,14 +80,7 @@ footer {
 	}
 
 	footer {
-		position: absolute;
-	  	right: 0;
-	  	bottom: 0;
-	  	left: 0;
-	 	/* padding: 1rem;*/
-		background-color: #66bb6a ;
-		padding-top: 2%;
-		color: #fafafa ;
+	
 	}
 	#footer_profile {
 		position: absolute;
@@ -96,14 +91,14 @@ footer {
 @media (max-height: 400px) { 
 
 	footer {
-		position: static;
+		position: relative;
 
 	}
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
 	footer {
-		position: absolute;
+		position: relative;
 	}
 }
 

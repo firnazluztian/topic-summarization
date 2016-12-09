@@ -1,94 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-	<title>Topic Summarization</title>
+  <title>Topic Summarization</title>
 
-	<!-- main css -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- advance search css -->
-	<link rel="stylesheet" type="text/css" href="css/search_style.css">
-	<!-- bootstrap main css -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- main css -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- advance search css -->
+  <link rel="stylesheet" type="text/css" href="css/search_style.css">
+  <!-- bootstrap main css -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body id="body">
-	
-	<header>
+  <div class="container">
+  <header>
 
-	<img id="img_logo" class="img-responsive" src="css/pic/logo.jpg">
-	<h3 style="text-align: center;">Try it now! search any hashtag below</h3>
-	<!-- plugin advance search  -->
-	<div class="search_bar">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-			        <div class="input-group" id="adv-search">
-			            <input type="text" class="form-control" placeholder="Search for hashtag" />
-			            <div class="input-group-btn">
-			                <div class="btn-group" role="group">
-			                    <div class="dropdown dropdown-lg">
-			                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-			                        <div class="dropdown-menu dropdown-menu-right" role="menu">
-			                            <form class="form-horizontal" role="form">
+  <img id="img_logo" class="img-responsive" src="css/pic/logo.jpg">
+  <h3 style="text-align: center;">Try it now! search any hashtag below</h3>
+  <!-- plugin advance search  -->
+  <div class="search_bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+              <div class="input-group" id="adv-search">
+                  <input type="text" class="form-control" id="search" placeholder="Search for hashtag" />
+                  <div class="input-group-btn">
+                      <div class="btn-group" role="group">
+                          <div class="dropdown dropdown-lg">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                              <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                  <form class="form-horizontal" role="form">
 
-			                              <div class="form-group">
-			                                <label for="filter">Filter by</label>
-			                                <select class="form-control">
-			                                    <option value="0" selected>Most popular</option>
-			                                    <option value="1">Relevance</option>
-			                                    <option value="2">Location</option>
-			                                </select>
-			                              </div>
+                                    <div class="form-group">
+                                      <label for="filter">Filter by</label>
+                                      <select class="form-control">
+                                          <option value="0" selected>Most popular</option>
+                                          <option value="1">Relevance</option>
+                                          <option value="2">Location</option>
+                                      </select>
+                                    </div>
 
-			                              <div class="form-group">
-			                                <label for="contain">Contains the words</label>
-			                                <input class="form-control" type="text" />
-			                              </div>
+                                    <div class="form-group">
+                                      <label for="contain">Contains the words</label>
+                                      <input class="form-control" type="text" />
+                                    </div>
 
-			                              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true" onclick="runSearch()"></span></button>
-			                            </form>  
-			                        </div>
-			                    </div>
-			                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true" onclick="runSearch()"></span></button>
-			                </div>
-			            </div>
-			        </div>
-			      </div>
-			    </div>
-			</div>
-		</div>
-	</header>
-<!-- 
-	<div id="loader">
-		<p style="text-align: center;">loading</p>	
-	</div> -->
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true" onclick="runSearch()"></span></button>
+                                  </form>  
+                              </div>
+                          </div>
+                          <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true" onclick="runSearch()"></span></button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </header>
 
-	<footer>
-		<ul class="list-inline" style="text-align: center;">
-  			<li>About us</li>
-  			<li>Project details</li>	
-  			<li>Contact us</li>
-		</ul>
-		<p style="text-align: center; padding: 1%;margin: 0;">Copyright © 2016, Cooper. All rights reserved.</p>
-	</footer>
+  <content>
+  <div class="body_container">
+    <!-- input result here -->
+    <table class="table table-striped">
+        <thead>
+          <tr>
+          	<th>id</th> 
+            <th>tweet_id</th> 
+            <th>tweet_text</th>
+            <th>hashtag</th>
+            <th>text_lang</th>
+            <th>location</th>
+          </tr>
+        </thead>
+      <tbody id="show_result"></tbody>
+    </table>
+  </div>
+  </content>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+ 
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-		function runSearch() {
-   			/*showLoader()*/
-   			window.location = 'hashtag.html';
+    function runSearch() {
+        /*showLoader()*/
+        window.location = 'hashtag.html';
 
-   		}
-   	/*	function showLoader() {
-   			document.getElementById('loader').style.visibility='visible'
-   		}*/
-	</script>
+      }
+    /*  function showLoader() {
+        document.getElementById('loader').style.visibility='visible'
+      }*/
+  </script>
+
+  <!-- search JSON -->
+  <script type="text/javascript">
+    $('#search').keyup(function() {
+      $.getJSON('index.json',function(data) {
+        var searchField = $('#search').val();
+        var myExp = new RegExp(searchField,'i');
+        var output;
+
+        $.each(data, function(key, val) {
+          var count = 1;
+            if ((val.tweet_id.search(myExp) != -1) || (val.tweet_text.search(myExp) != -1)) {
+              output += '<tr>';
+              output += '<td>'+(key+1)+'</td>';
+              output += '<td>'+val.tweet_id+'</td>';
+              output += '<td>'+val.tweet_text+'</td>';
+              output += '</tr>';
+            }
+
+            return key<99;
+        });
+        
+        $('#show_result').html(output);
+      });
+    });
+  </script>
+  </div>
+   <footer>
+    <ul class="list-inline" style="text-align: center;">
+        <li>About us</li>
+        <li>Project details</li>  
+        <li>Contact us</li>
+    </ul>
+    <p style="text-align: center; padding: 1%;margin: 0;">Copyright © 2016, Cooper. All rights reserved.</p>
+  </footer>
 </body>
 </html>
