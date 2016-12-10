@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv = "X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <title>Search</title>
+
+    <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity = "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin = "anonymous">
+    <link rel = "stylesheet" href = "../css/search.css">
+    <link rel = "icon" href = "../icons/sm.png">
+  </head>
+  <body>
+    <div class="nav-head">
+      <nav class="sub-topic">
+        <ul class="nav masthead-nav">
+          <li class="active"><a href="#">Topic</a></li>
+          <li><a href="#">Sub 1</a></li>
+          <li><a href="#">Sub 2</a></li>
+          <li><a href="#">Sub 3</a></li>
+          <li><a href="#">Sub 4</a></li>
+          <li><a href="#">Sub 5</a></li>
+          <li><a href="#">Sub 6</a></li>
+        </ul>
+      </nav>
+      <nav class="page-number">
+        <ul class="nav masthead-nav">
+          <li><a>Page:</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">6</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class = "main-body">
+      <div class="tweet-container">
+        <div class="tweet">
+          <img class="usr-img" src="../icons/sm.png">
+          <h4 class="usr-name">Username</h4>
+          <h6 class="datetime">Time,Date and Location</h6><br/>
+          <p class="text">Tweet Text data along with hashtags and urls</p>
+          <ul id="show_tweet"></ul>
+        </div>
+      </div>
+      <div class="summary-container">
+        <h5>Summary</h5>
+        <h3 class="summary-type">Topic Summary</h3>
+        <p class="topic-summary">This is where the topic summary goes.</p>
+        <p id="show_summary"></p>
+      </div>
+      <div class="stat-container">
+        <div class="demographic-map">
+        </div>
+      </div>
+    </div>
+    <div class = "footer">
+      <form class="form-search">
+        <div class="input-group">
+          <div class="input-group-addon logo-icon">
+            <i class="filler"></i>
+          </div>
+          <label for = "sbox" class="sr-only">Search Topic</label>
+          <input id="search" type ="text" id="sbox" class="form-control" placeholder="Search Topic" required>
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-search search-icon"></i>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    <!-- jquery do not remove -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      $('#search').keyup(function() 
+      {
+          /*get JSON file*/
+          $.getJSON('index.json',function(data) 
+          {
+              var searchField = $('#search').val();
+              var myExp = new RegExp(searchField,'i');
+              var output;
+              $.each(data, function(key, val) 
+              {
+                  if ((val.tweet_text.search(myExp) != -1)) 
+                  {
+                   
+                    output += '<div id="tweet-box">';
+                  
+                    output += '<p>'+ val.tweet_text +'</p>';
+                    output += '<p>url: <a href="'+ val.url +'">'+ val.url +'</a></p>';
+                    output += '<p>hashtag: ' +val.hashtag + '</p>';
+                    output += '</div>';
+                  }
+
+                  return key<99;
+              });
+              
+              $('#show_tweet').html(output);
+          });
+      });
+      </script>
+
+      <script type="text/javascript">
+         $("#search").keyup(function(e){
+            var q = $("#search").val();
+            $.getJSON("http://en.wikipedia.org/w/api.php?callback=?",
+            {
+              srsearch: q,
+              action: "query",
+              list: "search",
+              format: "json"
+            },
+            function(data) 
+            {
+              $("#show_summary").empty();
+              $("#show_summary").append("Results for <b>" + q + "</b>");
+              $.each(data.query.search, function(i,item)
+              {
+                $("#show_summary").append("<div id='tweet-box'><a href='http://en.wikipedia.org/wiki/" + encodeURIComponent(item.title) + "'>" + item.title + "</a> <br>" + item.snippet + "</div>");
+              });
+          });
+      });
+    </script>
+  </body>
+</html>
